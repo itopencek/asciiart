@@ -1,3 +1,5 @@
-package loaders trait Loader {
+package loaders
 
+trait Loader[T, U] {
+  def load(source: U): T
 }

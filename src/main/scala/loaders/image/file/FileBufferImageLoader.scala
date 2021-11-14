@@ -1,3 +1,7 @@
-package loaders.image.file trait FileBufferImageLoader {
+package loaders.image.file
+
+import loaders.image.BufferImageLoader
+
+trait FileBufferImageLoader[T] extends BufferImageLoader[T, String] {
 
 }
