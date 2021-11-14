@@ -1,3 +1,5 @@
-package exporters.text class StdOutputStream {
+package exporters.text
+
+class StdOutputStream extends StreamTextExporter(System.out) {
 
 }
