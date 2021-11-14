@@ -1,0 +1,3 @@
+package convertors trait Convertor {
+
+}
