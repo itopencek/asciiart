@@ -1,8 +1,8 @@
 package loaders.image
 
 import loaders.Loader
-import models.images.buffer.BufferImage
+import models.images.pixel.PixelImage
 
-trait BufferImageLoader[T, U] extends Loader[BufferImage[T], U] {
+trait PixelImageLoader[T] extends Loader[PixelImage, T] {
 
 }
