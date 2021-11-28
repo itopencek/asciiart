@@ -1,10 +1,5 @@
 package models
 
-trait Entity[T]
+trait Entity
 {
-  /**
-   * Returns id of this entity
-   * @return
-   */
-  def id: T
 }
