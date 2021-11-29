@@ -1,7 +1,7 @@
 package exporters.image.ascii
 
 import exporters.image.ImageExporter
-import acsiiArtApp.models.images.pixel.PixelImage
+import acsiiArtApp.models.images.grid.PixelImage
 
 import java.io.OutputStream
 

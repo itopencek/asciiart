@@ -2,7 +2,7 @@ package loaders.image.file
 
 import loaders.image.PixelImageLoader
 import acsiiArtApp.models.grid.pixel.PixelGrid
-import acsiiArtApp.models.images.pixel.PixelImage
+import acsiiArtApp.models.images.grid.PixelImage
 import acsiiArtApp.models.pixel.Pixel
 import acsiiArtApp.models.pixel.rgb.RGBPixel
 

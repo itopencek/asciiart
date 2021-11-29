@@ -1,11 +1,9 @@
-package acsiiArtApp.models.images.pixel
+package acsiiArtApp.models.images.grid
 
 import acsiiArtApp.models.grid.pixel.PixelGrid
-import acsiiArtApp.models.images.Image
 import acsiiArtApp.models.pixel.Pixel
 
-// TODO maybe create trait GridImage
-case class PixelImage (width: Int, height: Int, grid: PixelGrid) extends Image {
+case class PixelImage (width: Int, height: Int, grid: PixelGrid) extends GridImage {
   override def getHeight(): Int = height
 
   override def getWidth(): Int = width
