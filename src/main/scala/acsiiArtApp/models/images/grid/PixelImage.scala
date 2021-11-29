@@ -1,6 +1,7 @@
 package acsiiArtApp.models.images.grid
 
 import acsiiArtApp.models.grid.pixel.PixelGrid
+import acsiiArtApp.models.images.visitor.ImageVisitor
 import acsiiArtApp.models.pixel.Pixel
 
 case class PixelImage (width: Int, height: Int, grid: PixelGrid) extends GridImage {
@@ -13,4 +14,7 @@ case class PixelImage (width: Int, height: Int, grid: PixelGrid) extends GridIma
   def foreach(func: Pixel => Unit): Unit = {
     grid.foreach(func)
   }
+
+  override def accept[U](visitor: ImageVisitor[U]): U =
+    visitor.visitPixelImage(this)
 }

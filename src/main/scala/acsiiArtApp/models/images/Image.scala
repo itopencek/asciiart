@@ -1,6 +1,7 @@
 package acsiiArtApp.models.images
 
 import acsiiArtApp.models.Entity
+import acsiiArtApp.models.images.visitor.ImageVisitor
 
 trait Image[T] extends Entity {
 
@@ -9,4 +10,6 @@ trait Image[T] extends Entity {
   def getWidth(): Int
 
   def getData(): T
+
+  def accept[U](visitor: ImageVisitor[U]): U
 }
