@@ -5,6 +5,7 @@ import acsiiArtApp.models.images.grid.PixelImage
 
 import java.io.OutputStream
 
+// TODO Delete - or better save this code
 class StreamImageExporter(outputStream: OutputStream) extends ImageExporter {
   private var closed = false
   private val NEW_LINE = 10
