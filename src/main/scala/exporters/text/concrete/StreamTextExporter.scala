@@ -1,4 +1,6 @@
-package exporters.text
+package exporters.text.concrete
+
+import exporters.text.TextExporter
 
 import java.io.OutputStream
 
