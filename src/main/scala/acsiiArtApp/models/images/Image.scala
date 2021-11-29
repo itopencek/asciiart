@@ -1,6 +1,6 @@
-package models.images
+package acsiiArtApp.models.images
 
-import models.Entity
+import acsiiArtApp.models.Entity
 
 trait Image extends Entity {
 

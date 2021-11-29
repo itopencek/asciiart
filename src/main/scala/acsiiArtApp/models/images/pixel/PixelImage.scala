@@ -1,8 +1,8 @@
-package models.images.pixel
+package acsiiArtApp.models.images.pixel
 
-import models.grid.pixel.PixelGrid
-import models.images.Image
-import models.pixel.Pixel
+import acsiiArtApp.models.grid.pixel.PixelGrid
+import acsiiArtApp.models.images.Image
+import acsiiArtApp.models.pixel.Pixel
 
 // TODO maybe create trait GridImage
 case class PixelImage (width: Int, height: Int, grid: PixelGrid) extends Image {

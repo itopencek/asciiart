@@ -1,10 +1,10 @@
 package loaders.image.file
 
 import loaders.image.PixelImageLoader
-import models.grid.pixel.PixelGrid
-import models.images.pixel.PixelImage
-import models.pixel.Pixel
-import models.pixel.rgb.RGBPixel
+import acsiiArtApp.models.grid.pixel.PixelGrid
+import acsiiArtApp.models.images.pixel.PixelImage
+import acsiiArtApp.models.pixel.Pixel
+import acsiiArtApp.models.pixel.rgb.RGBPixel
 
 import java.io.File
 import javax.imageio.ImageIO

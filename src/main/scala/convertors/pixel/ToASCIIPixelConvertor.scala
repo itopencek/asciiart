@@ -1,6 +1,6 @@
 package convertors.pixel
-import models.pixel.ascii.ASCIIPixel
-import models.pixel.rgb.RGBPixel
+import acsiiArtApp.models.pixel.ascii.ASCIIPixel
+import acsiiArtApp.models.pixel.rgb.RGBPixel
 
 class ToASCIIPixelConvertor extends PixelConvertor {
   private val asciiChars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`\'. "

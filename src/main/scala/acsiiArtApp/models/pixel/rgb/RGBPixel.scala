@@ -1,6 +1,6 @@
-package models.pixel.rgb
+package acsiiArtApp.models.pixel.rgb
 
-import models.pixel.Pixel
+import acsiiArtApp.models.pixel.Pixel
 
 case class RGBPixel(r: Int, g: Int, b: Int) extends Pixel {
   override def getInt(): Int = {

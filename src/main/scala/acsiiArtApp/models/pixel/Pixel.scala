@@ -1,6 +1,6 @@
-package models.pixel
+package acsiiArtApp.models.pixel
 
-import models.Entity
+import acsiiArtApp.models.Entity
 
 trait Pixel extends Entity {
   // Int representation of pixel
