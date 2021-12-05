@@ -1,20 +1,19 @@
 package loaders.image.file
 
-import loaders.image.PixelImageLoader
-import acsiiArtApp.models.grid.pixel.PixelGrid
-import acsiiArtApp.models.images.grid.AsciiImage
-import acsiiArtApp.models.pixel.Pixel
+import acsiiArtApp.models.grid.pixel.RgbGrid
+import loaders.image.RgbImageLoader
+import acsiiArtApp.models.images.grid.RgbImage
 import acsiiArtApp.models.pixel.rgb.RGBPixel
 
 import java.io.File
 import javax.imageio.ImageIO
 
-class FilePixelImageLoader extends PixelImageLoader[String] {
-  override def load(source: String): AsciiImage = {
+class FileRgbImageLoader extends RgbImageLoader[String] {
+  override def load(source: String): RgbImage = {
     val img = ImageIO.read(new File(source))
     val width = img.getWidth
     val height = img.getHeight
-    val data = Array.ofDim[Pixel](width * height)
+    val data = Array.ofDim[RGBPixel](width * height)
 
     // we read by rows
     for (i <- 0 to height) {
@@ -29,6 +28,6 @@ class FilePixelImageLoader extends PixelImageLoader[String] {
       }
     }
 
-    AsciiImage(width, height, PixelGrid(data))
+    RgbImage(width, height, RgbGrid(data))
   }
 }

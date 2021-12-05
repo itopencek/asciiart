@@ -1,10 +1,10 @@
 package acsiiArtApp
 
-import acsiiArtApp.models.images.grid.AsciiImage
+import acsiiArtApp.models.images.grid.{AsciiImage, RgbImage}
 import acsiiArtApp.models.images.visitor.ImageVisitor
 
 class ImageTextRenderVisitor extends ImageVisitor[String] {
-  override def visitPixelImage(image: AsciiImage): String = {
+  override def visitAsciiImage(image: AsciiImage): String = {
     var response = ""
     var num = 0
 
@@ -20,4 +20,6 @@ class ImageTextRenderVisitor extends ImageVisitor[String] {
 
     response
   }
+
+  override def visitRgbImage(image: RgbImage): String = ???
 }
