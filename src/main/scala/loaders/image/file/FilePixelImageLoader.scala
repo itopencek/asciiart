@@ -2,7 +2,7 @@ package loaders.image.file
 
 import loaders.image.PixelImageLoader
 import acsiiArtApp.models.grid.pixel.PixelGrid
-import acsiiArtApp.models.images.grid.PixelImage
+import acsiiArtApp.models.images.grid.AsciiImage
 import acsiiArtApp.models.pixel.Pixel
 import acsiiArtApp.models.pixel.rgb.RGBPixel
 
@@ -10,7 +10,7 @@ import java.io.File
 import javax.imageio.ImageIO
 
 class FilePixelImageLoader extends PixelImageLoader[String] {
-  override def load(source: String): PixelImage = {
+  override def load(source: String): AsciiImage = {
     val img = ImageIO.read(new File(source))
     val width = img.getWidth
     val height = img.getHeight
@@ -29,6 +29,6 @@ class FilePixelImageLoader extends PixelImageLoader[String] {
       }
     }
 
-    PixelImage(width, height, PixelGrid(data))
+    AsciiImage(width, height, PixelGrid(data))
   }
 }
