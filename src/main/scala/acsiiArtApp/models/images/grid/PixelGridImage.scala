@@ -1,8 +1,8 @@
 package acsiiArtApp.models.images.grid
 
 import acsiiArtApp.models.grid.pixel.PixelGrid
-import acsiiArtApp.models.pixel.Pixel
+import acsiiArtApp.models.images.Image
 
-trait PixelGridImage[T <: Pixel] extends GridImage[PixelGrid[T]] {
+trait PixelGridImage extends Image[PixelGrid] {
 
 }
