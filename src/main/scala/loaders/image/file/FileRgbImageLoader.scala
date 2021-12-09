@@ -28,6 +28,6 @@ class FileRgbImageLoader extends RgbImageLoader[String] {
       }
     }
 
-    RgbImage(width, height, RgbGrid(data))
+    RgbImage(width, height, RgbGrid(width, data))
   }
 }

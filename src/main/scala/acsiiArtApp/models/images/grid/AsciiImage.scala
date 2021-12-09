@@ -9,7 +9,7 @@ case class AsciiImage(width: Int, height: Int, grid: AsciiGrid) extends PixelGri
 
   override def getWidth(): Int = width
 
-  override def getData(): AsciiGrid = grid
+  override def getData(): AsciiGrid = grid.copy()
 
   def foreach(func: Pixel => Unit): Unit = {
     grid.foreach(func)
@@ -17,4 +17,8 @@ case class AsciiImage(width: Int, height: Int, grid: AsciiGrid) extends PixelGri
 
   override def accept[U](visitor: ImageVisitor[U]): U =
     visitor.visitAsciiImage(this)
+
+  override def getPixel(x: Int, y: Int): Pixel = {
+    grid.get(x, y)
+  }
 }
