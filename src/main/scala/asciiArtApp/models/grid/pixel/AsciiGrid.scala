@@ -11,6 +11,6 @@ case class AsciiGrid (width: Int, grid: Iterable[ASCIIPixel]) extends PixelGrid 
   override def get(x: Int, y: Int): Pixel = {
     val pos = width * y + x
 
-    grid.slice(pos, pos + 1).head
+    grid.slice(pos, pos + 1).head.copy()
   }
 }
