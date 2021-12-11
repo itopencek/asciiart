@@ -1,7 +1,7 @@
-package loaders.image.file
+package asciiArtApp.loaders.image.file
 
+import asciiArtApp.loaders.image.RgbImageLoader
 import asciiArtApp.models.grid.pixel.RgbGrid
-import loaders.image.RgbImageLoader
 import asciiArtApp.models.images.grid.RgbImage
 import asciiArtApp.models.pixel.rgb.RGBPixel
 

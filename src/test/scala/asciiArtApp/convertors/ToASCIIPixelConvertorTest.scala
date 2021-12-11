@@ -1,7 +1,8 @@
-package convertors
+package asciiArtApp.convertors
+
+import asciiArtApp.convertors.pixel.ToASCIIPixelConvertor
 import asciiArtApp.models.pixel.ascii.ASCIIPixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
-import convertors.pixel.ToASCIIPixelConvertor
 import org.scalatest.FunSuite
 
 class ToASCIIPixelConvertorTest extends FunSuite {

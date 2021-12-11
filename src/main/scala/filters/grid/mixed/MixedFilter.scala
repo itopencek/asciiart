@@ -1,7 +1,7 @@
 package filters.grid.mixed
 
-import filters.grid.GridFilter
 import asciiArtApp.models.grid.pixel.PixelGrid
+import filters.grid.GridFilter
 
 class MixedFilter(filters: Seq[GridFilter]) extends GridFilter {
   override def filter(item: PixelGrid): PixelGrid =

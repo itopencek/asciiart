@@ -1,4 +1,5 @@
-package convertors.pixel
+package asciiArtApp.convertors.pixel
+
 import asciiArtApp.models.pixel.ascii.ASCIIPixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
