@@ -7,14 +7,14 @@ import asciiArtApp.models.pixel.rgb.RGBPixel
 
 import java.io.File
 import javax.imageio.ImageIO
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.ArrayBuffer
 
 class FileRgbImageLoader extends RgbImageLoader[String] {
   override def load(source: String): RgbImage = {
     val img = ImageIO.read(new File(source))
     val width = img.getWidth
     val height = img.getHeight
-    val data = new ListBuffer[RGBPixel]()
+    val data = new ArrayBuffer[RGBPixel]()
 
     // we read by rows
     for (i <- 0 until height) {
@@ -29,6 +29,6 @@ class FileRgbImageLoader extends RgbImageLoader[String] {
       }
     }
 
-    RgbImage(width, height, RgbGrid(width, data))
+    RgbImage(width, height, RgbGrid(width, data.toArray[RGBPixel]))
   }
 }

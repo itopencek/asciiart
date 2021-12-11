@@ -8,7 +8,6 @@ import asciiArtApp.models.pixel.char.CharPixel
 import org.scalatest.FunSuite
 
 import java.io.File
-import scala.collection.mutable.ListBuffer
 
 class ToAsciiImageConvertorTest extends FunSuite {
   def imageConvertor(item: RgbImage): CharImage = new ToAsciiImageConvertor().convert(item)
@@ -20,7 +19,7 @@ class ToAsciiImageConvertorTest extends FunSuite {
 
   test("Test basic conversion") {
     val result = imageConvertor(imageColors)
-    val asciiImage = CharImage(2, 3, CharGrid(2, ListBuffer(CharPixel("Z".head), CharPixel("#".head),
+    val asciiImage = CharImage(2, 3, CharGrid(2, Array(CharPixel("Z".head), CharPixel("#".head),
       CharPixel(";".head), CharPixel("|".head), CharPixel(" ".head), CharPixel("$".head))))
 
     assert(result == asciiImage)

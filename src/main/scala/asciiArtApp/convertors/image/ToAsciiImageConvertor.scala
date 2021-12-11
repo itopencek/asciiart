@@ -5,7 +5,7 @@ import asciiArtApp.models.images.grid.{CharImage, RgbImage}
 import asciiArtApp.models.pixel.char.CharPixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.ArrayBuffer
 
 class ToAsciiImageConvertor extends ImageConvertor {
   private def pixelConvertor = new ToAsciiPixelConvertor
@@ -13,9 +13,9 @@ class ToAsciiImageConvertor extends ImageConvertor {
 
   override def convert(item: RgbImage): CharImage = {
     val width = item.getWidth()
-    val data = new ListBuffer[CharPixel]()
+    val data = new ArrayBuffer[CharPixel]()
     item.foreach(pixel => data.append(convert(pixel)))
 
-    CharImage(width, item.getHeight(), CharGrid(width, data))
+    CharImage(width, item.getHeight(), CharGrid(width, data.toArray[CharPixel]))
   }
 }
