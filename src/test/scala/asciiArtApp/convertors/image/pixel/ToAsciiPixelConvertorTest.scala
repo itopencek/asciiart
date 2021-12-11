@@ -1,39 +1,38 @@
-package asciiArtApp.convertors
+package asciiArtApp.convertors.image.pixel
 
-import asciiArtApp.convertors.pixel.ToASCIIPixelConvertor
-import asciiArtApp.models.pixel.ascii.ASCIIPixel
+import asciiArtApp.models.pixel.char.CharPixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 import org.scalatest.FunSuite
 
-class ToASCIIPixelConvertorTest extends FunSuite {
-  def convert(pixel: RGBPixel): ASCIIPixel = new ToASCIIPixelConvertor().convert(pixel)
+class ToAsciiPixelConvertorTest extends FunSuite {
+  def convert(pixel: RGBPixel): CharPixel = new ToAsciiPixelConvertor().convert(pixel)
 
   test("Convert black pixel") {
     val pixel = RGBPixel(0, 0, 0)
     val result = convert(pixel)
 
-    assert(result == ASCIIPixel("$".head))
+    assert(result == CharPixel("$".head))
   }
 
   test("Convert white pixel") {
     val pixel = RGBPixel(255, 255, 255)
     val result = convert(pixel)
 
-    assert(result == ASCIIPixel(" ".head))
+    assert(result == CharPixel(" ".head))
   }
 
   test("Convert red pixel") {
     val pixel = RGBPixel(255, 0, 0)
     val result = convert(pixel)
 
-    assert(result == ASCIIPixel("Z".head))
+    assert(result == CharPixel("Z".head))
   }
 
   test("Convert random pixel") {
     val pixel = RGBPixel(128, 123, 78)
     val result = convert(pixel)
 
-    assert(result == ASCIIPixel("c".head))
+    assert(result == CharPixel("c".head))
   }
 
   test("Convert error or other edge case? Non existent?") {

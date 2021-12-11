@@ -1,17 +1,18 @@
 package asciiArtApp.models.images.grid
 
-import asciiArtApp.models.grid.pixel.AsciiGrid
+import asciiArtApp.models.grid.pixel.CharGrid
 import asciiArtApp.models.images.visitor.ImageVisitor
 import asciiArtApp.models.pixel.Pixel
+import asciiArtApp.models.pixel.char.CharPixel
 
-case class AsciiImage(width: Int, height: Int, grid: AsciiGrid) extends PixelGridImage {
+case class CharImage(width: Int, height: Int, grid: CharGrid) extends PixelGridImage[CharPixel] {
   override def getHeight(): Int = height
 
   override def getWidth(): Int = width
 
-  override def getData(): AsciiGrid = grid.copy()
+  def getData(): CharGrid = grid.copy()
 
-  def foreach(func: Pixel => Unit): Unit = {
+  def foreach(func: CharPixel => Unit): Unit = {
     grid.foreach(func)
   }
 

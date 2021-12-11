@@ -1,8 +1,8 @@
 package filters.grid.specific
 
-import asciiArtApp.models.grid.pixel.PixelGrid
+import asciiArtApp.models.grid.pixel.CharGrid
 import filters.grid.GridFilter
 
 class FlipFilter extends GridFilter {
-  override def filter(item: PixelGrid): PixelGrid = ???
+  override def filter(item: CharGrid): CharGrid = ???
 }

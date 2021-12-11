@@ -3,15 +3,17 @@ package asciiArtApp.models.images.grid
 import asciiArtApp.models.grid.pixel.RgbGrid
 import asciiArtApp.models.images.visitor.ImageVisitor
 import asciiArtApp.models.pixel.Pixel
+import asciiArtApp.models.pixel.char.CharPixel
+import asciiArtApp.models.pixel.rgb.RGBPixel
 
-case class RgbImage(width: Int, height: Int, grid: RgbGrid) extends PixelGridImage {
+case class RgbImage(width: Int, height: Int, grid: RgbGrid) extends PixelGridImage[CharPixel] {
   override def getHeight(): Int = height
 
   override def getWidth(): Int = width
 
-  override def getData(): RgbGrid = grid
+  def getData(): RgbGrid = grid
 
-  def foreach(func: Pixel => Unit): Unit = {
+  def foreach(func: RGBPixel => Unit): Unit = {
     grid.foreach(func)
   }
 

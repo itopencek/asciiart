@@ -1,10 +1,10 @@
 package asciiArtApp.models.grid.pixel
 
 import asciiArtApp.models.pixel.Pixel
-import asciiArtApp.models.pixel.ascii.ASCIIPixel
+import asciiArtApp.models.pixel.char.CharPixel
 
-case class AsciiGrid (width: Int, grid: Iterable[ASCIIPixel]) extends PixelGrid {
-  override def foreach(func: Pixel => Unit): Unit = {
+case class CharGrid(width: Int, grid: Iterable[CharPixel]) extends PixelGrid[CharPixel] {
+  override def foreach(func: CharPixel => Unit): Unit = {
     grid.foreach(func)
   }
 

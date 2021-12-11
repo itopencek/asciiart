@@ -3,8 +3,8 @@ package asciiArtApp.models.grid.pixel
 import asciiArtApp.models.pixel.Pixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
-case class RgbGrid(width: Int, grid: Iterable[RGBPixel]) extends PixelGrid {
-  override def foreach(func: Pixel => Unit): Unit = {
+case class RgbGrid(width: Int, grid: Iterable[RGBPixel]) extends PixelGrid[RGBPixel] {
+  override def foreach(func: RGBPixel => Unit): Unit = {
     grid.foreach(func)
   }
 

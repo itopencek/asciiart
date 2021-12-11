@@ -1,15 +1,15 @@
 package asciiArtApp.console.views.rendering
 
-import asciiArtApp.models.images.grid.{AsciiImage, RgbImage}
+import asciiArtApp.models.images.grid.{CharImage, RgbImage}
 import asciiArtApp.models.images.visitor.ImageVisitor
 
 class ImageTextRenderVisitor extends ImageVisitor[String] {
-  override def visitAsciiImage(image: AsciiImage): String = {
+  override def visitAsciiImage(image: CharImage): String = {
     var output = ""
 
-    for (x <- 0 to image.getWidth()) {
-      for (y <- 0 to image.getHeight()) {
-        output += image.getPixel(x, y).getInt().toChar
+    for (x <- 0 until image.getHeight()) {
+      for (y <- 0 until image.getWidth()) {
+        output += image.getPixel(y, x).getInt().toChar
       }
       output += "\n"
     }
