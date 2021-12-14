@@ -13,4 +13,6 @@ case class RgbGrid(width: Int, grid: Seq[RGBPixel]) extends PixelGrid[RGBPixel] 
 
     grid(pos)
   }
+
+  override def getGrid: Seq[RGBPixel] = grid
 }

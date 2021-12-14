@@ -11,4 +11,6 @@ case class CharGrid(width: Int, grid: Seq[CharPixel]) extends PixelGrid[CharPixe
 
     grid(pos)
   }
+
+  override def getGrid: Seq[CharPixel] = grid
 }

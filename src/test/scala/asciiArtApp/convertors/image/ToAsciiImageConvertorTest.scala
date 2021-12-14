@@ -1,6 +1,5 @@
 package asciiArtApp.convertors.image
 
-import asciiArtApp.console.views.rendering.ImageTextRenderVisitor
 import asciiArtApp.loaders.image.file.FileRgbImageLoader
 import asciiArtApp.models.grid.pixel.CharGrid
 import asciiArtApp.models.images.grid.{CharImage, RgbImage}
@@ -8,7 +7,6 @@ import asciiArtApp.models.pixel.char.CharPixel
 import org.scalatest.FunSuite
 
 import java.io.File
-import scala.io.Source
 
 class ToAsciiImageConvertorTest extends FunSuite {
   def imageConvertor(item: RgbImage): CharImage = new ToAsciiImageConvertor().convert(item)
