@@ -4,6 +4,11 @@ import exporters.text.TextExporter
 
 import java.io.OutputStream
 
+/**
+ * Exports text to {@link OutputStream}.
+ *
+ * @param outputStream {@link OutputStream} to export text to
+ */
 class StreamTextExporter(outputStream: OutputStream) extends TextExporter
 {
   private var closed = false
@@ -17,6 +22,9 @@ class StreamTextExporter(outputStream: OutputStream) extends TextExporter
     outputStream.flush()
   }
 
+  /**
+   * Close {@link OutputStream}.
+   */
   def close(): Unit = {
     if (closed)
       return
@@ -25,5 +33,10 @@ class StreamTextExporter(outputStream: OutputStream) extends TextExporter
     closed = true
   }
 
+  /**
+   * Exports item.
+   *
+   * @param item {@link String} to export
+   */
   override def export(item: String): Unit = exportToStream(item)
 }
