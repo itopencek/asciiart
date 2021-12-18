@@ -1,11 +1,11 @@
 package asciiArtApp.convertors.image.pixel
 
 import asciiArtApp.convertors.Convertor
-import asciiArtApp.models.pixel.char.CharPixel
+import asciiArtApp.models.pixel.char.GreyscalePixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
-class PixelConvertor(asciiCharsTable: String) extends Convertor[RGBPixel, CharPixel] {
-  override def convert(item: RGBPixel): CharPixel = {
+class PixelConvertor(asciiCharsTable: String) extends Convertor[RGBPixel, GreyscalePixel] {
+  override def convert(item: RGBPixel): GreyscalePixel = {
     val greyScale = (0.3 * item.r) + (0.59 * item.g) + (0.11 * item.b)
     val rampLength = asciiCharsTable.length
 
@@ -14,6 +14,6 @@ class PixelConvertor(asciiCharsTable: String) extends Convertor[RGBPixel, CharPi
     }
     val index = ((rampLength - 1) * greyScale / 255).toInt
 
-    CharPixel(asciiCharsTable.charAt(index))
+    GreyscalePixel(asciiCharsTable.charAt(index))
   }
 }

@@ -3,7 +3,7 @@ package asciiArtApp.convertors.image
 import asciiArtApp.loaders.image.file.FileRgbImageLoader
 import asciiArtApp.models.grid.pixel.CharGrid
 import asciiArtApp.models.images.grid.{CharImage, RgbImage}
-import asciiArtApp.models.pixel.char.CharPixel
+import asciiArtApp.models.pixel.char.GreyscalePixel
 import org.scalatest.FunSuite
 
 import java.io.File
@@ -20,8 +20,8 @@ class ToAsciiImageConvertorTest extends FunSuite {
 
   test("Test basic conversion") {
     val result = imageConvertor(imageColors)
-    val asciiImage = CharImage(2, 3, CharGrid(2, Array(CharPixel("Z".head), CharPixel("#".head),
-      CharPixel(";".head), CharPixel("|".head), CharPixel(" ".head), CharPixel("$".head))))
+    val asciiImage = CharImage(2, 3, CharGrid(2, Array(GreyscalePixel("Z".head), GreyscalePixel("#".head),
+      GreyscalePixel(";".head), GreyscalePixel("|".head), GreyscalePixel(" ".head), GreyscalePixel("$".head))))
 
     assert(result == asciiImage)
   }
