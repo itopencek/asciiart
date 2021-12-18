@@ -2,7 +2,7 @@ package asciiArtApp.models.grid.pixel
 
 import asciiArtApp.models.pixel.char.GreyscalePixel
 
-case class CharGrid(width: Int, grid: Seq[GreyscalePixel]) extends PixelGrid[GreyscalePixel] {
+case class GreyscaleGrid(width: Int, grid: Seq[GreyscalePixel]) extends PixelGrid {
   def foreach(func: GreyscalePixel => Unit): Unit =
     grid.foreach(func)
 

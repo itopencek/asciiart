@@ -1,8 +1,8 @@
 package filters.grid
 
-import asciiArtApp.models.grid.pixel.CharGrid
+import asciiArtApp.models.grid.pixel.GreyscaleGrid
 import filters.Filter
 
-trait GridFilter extends Filter[CharGrid] {
-  override def filter(item: CharGrid): CharGrid
+trait GridFilter extends Filter[GreyscaleGrid] {
+  override def filter(item: GreyscaleGrid): GreyscaleGrid
 }

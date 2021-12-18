@@ -1,9 +1,9 @@
 package filters.grid.defaults
 
-import asciiArtApp.models.grid.pixel.CharGrid
+import asciiArtApp.models.grid.pixel.GreyscaleGrid
 import filters.defaults.IdentityFilter
 import filters.grid.GridFilter
 
-class GridIdentityFilter extends IdentityFilter[CharGrid] with GridFilter {
+class GridIdentityFilter extends IdentityFilter[GreyscaleGrid] with GridFilter {
 
 }
