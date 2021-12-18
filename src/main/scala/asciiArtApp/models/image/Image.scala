@@ -8,6 +8,4 @@ trait Image[T] extends Entity {
   def getHeight(): Int
 
   def getWidth(): Int
-
-  def accept[U](visitor: ImageVisitor[U]): U
 }

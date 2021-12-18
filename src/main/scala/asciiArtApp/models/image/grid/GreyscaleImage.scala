@@ -15,8 +15,8 @@ case class GreyscaleImage(width: Int, height: Int, grid: GreyscaleGrid) extends 
     grid.foreach(func)
   }
 
-  override def accept[U](visitor: ImageVisitor[U]): U =
-    visitor.visitAsciiImage(this)
+  def accept[U](visitor: ImageVisitor[U]): U =
+    visitor.visitGreyscaleImage(this)
 
   override def getPixel(x: Int, y: Int): GreyscalePixel = {
     grid.get(x, y)

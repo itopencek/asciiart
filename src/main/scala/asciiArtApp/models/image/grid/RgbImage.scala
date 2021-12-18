@@ -17,9 +17,6 @@ case class RgbImage(width: Int, height: Int, grid: RgbGrid) extends PixelGridIma
     grid.foreach(func)
   }
 
-  override def accept[U](visitor: ImageVisitor[U]): U =
-    visitor.visitRgbImage(this)
-
   override def getPixel(x: Int, y: Int): Pixel = {
     grid.get(x, y)
   }

@@ -3,8 +3,17 @@ package asciiArtApp
 import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 import asciiArtApp.models.image.visitor.ImageVisitor
 
+/**
+ * Visitor for {@link asciiArtApp.models.image.grid.PixelGridImage}. Implementation of {@link ImageVisitor}.
+ */
 class ImageTextRenderVisitor extends ImageVisitor[String] {
-  override def visitAsciiImage(image: GreyscaleImage): String = {
+  /**
+   * Returns {@link GreyscaleImage} in formatted {@link String}.
+   *
+   * @param image {@link GreyscaleImage} to visit
+   * @return {@link String} of {@link GreyscaleImage}
+   */
+  override def visitGreyscaleImage(image: GreyscaleImage): String = {
     var response = ""
     var num = 0
 
@@ -20,6 +29,4 @@ class ImageTextRenderVisitor extends ImageVisitor[String] {
 
     response
   }
-
-  override def visitRgbImage(image: RgbImage): String = ???
 }

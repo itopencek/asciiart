@@ -11,7 +11,7 @@ import exporters.text.concrete.StreamTextExporter
  * @param exporter exporter type to use
  */
 class StreamTextOutput(exporter: StreamTextExporter) extends Output[GreyscaleImage] {
-  def visit(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitAsciiImage(image)
+  def visit(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitGreyscaleImage(image)
   def export(item: String): Unit = exporter.`export`(item)
 
   override def output(item: GreyscaleImage): Unit = {
