@@ -1,6 +1,7 @@
 package asciiArtApp.console
 
-import asciiArtApp.console.outputs.image.{ConsoleOutput, FileOutput, ImageOutput}
+import asciiArtApp.console.outputs.image.ImageOutput
+import asciiArtApp.console.outputs.image.specific.{ConsoleOutput, FileOutput}
 import asciiArtApp.filters.grid.ImageFilter
 import asciiArtApp.filters.grid.defaults.GridIdentityFilter
 import asciiArtApp.filters.grid.specific.{BrightnessFilter, FlipFilter, InvertFilter}
@@ -59,8 +60,23 @@ class ConsoleParser extends Parser[String] {
    */
   private def checkInputArg(): Unit = {
     if (alreadySetInput) {
-      throw new IllegalArgumentException("Only one input parameter allowed.")
+      throw new IllegalArgumentException("Only one input argument allowed.")
     }
     alreadySetInput = true
+  }
+
+  def getFilters: Seq[ImageFilter] = filters
+
+  def getOutputs: Seq[ImageOutput] = outputs
+
+  /**
+   * Returns {@link RgbImageLoader} if it was set, otherwise throws IllegalArgumentException.
+   */
+  def getLoader: RgbImageLoader = {
+    if (!alreadySetInput) {
+      throw new IllegalArgumentException("At least one input argument expected.")
+    }
+
+    loader
   }
 }

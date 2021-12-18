@@ -1,15 +1,8 @@
 package asciiArtApp.console.outputs.image
 
-import asciiArtApp.ImageTextRenderVisitor
 import asciiArtApp.console.outputs.Output
 import asciiArtApp.models.image.grid.GreyscaleImage
-import exporters.text.concrete.StreamTextExporter
 
-class ImageOutput(exporter: StreamTextExporter) extends Output[GreyscaleImage] {
-  def visit(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitAsciiImage(image)
-  def export(item: String): Unit = exporter.`export`(item)
+trait ImageOutput extends Output[GreyscaleImage] {
 
-  override def output(item: GreyscaleImage): Unit = {
-    export(visit(item))
-  }
 }
