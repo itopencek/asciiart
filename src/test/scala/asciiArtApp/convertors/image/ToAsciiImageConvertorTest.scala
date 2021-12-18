@@ -10,7 +10,7 @@ import java.io.File
 
 class ToAsciiImageConvertorTest extends FunSuite {
   def imageConvertor(item: RgbImage): GreyscaleImage = new ToAsciiImageConvertor().convert(item)
-  def load(source: String): RgbImage = new FileRgbImageLoader().load(source)
+  def load(source: String): RgbImage = new FileRgbImageLoader(source).load()
 
   val baseUrl = "src/test/resources"
   val imageColors: RgbImage = load(new File(baseUrl + "/colors.bmp").getAbsolutePath)

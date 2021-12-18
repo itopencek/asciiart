@@ -9,8 +9,8 @@ import java.io.File
 import javax.imageio.ImageIO
 import scala.collection.mutable.ArrayBuffer
 
-class FileRgbImageLoader extends RgbImageLoader[String] {
-  override def load(source: String): RgbImage = {
+class FileRgbImageLoader(source: String) extends RgbImageLoader {
+  override def load(): RgbImage = {
     val img = ImageIO.read(new File(source))
     val width = img.getWidth
     val height = img.getHeight

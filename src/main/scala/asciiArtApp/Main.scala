@@ -1,0 +1,3 @@
+package asciiArtApp
+
+object Main {}

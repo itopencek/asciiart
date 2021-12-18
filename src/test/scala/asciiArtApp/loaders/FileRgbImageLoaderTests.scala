@@ -13,7 +13,7 @@ class FileRgbImageLoaderTests extends FunSuite {
   val biOopPath: String = new File("src/test/resources/bi-oop.jpg").getAbsolutePath
   val imageCowboyPath: String = new File("src/test/resources/image-cowboy.png").getAbsolutePath
   val imageCowboyString = "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7951688 0 0 7951688 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10395294 10395294 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2201331 0 0 2201331 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7951688 2201331 0 0 0 0 2201331 7951688 0 0 0 0 0 0 0 0 0 0 0 0 7951688 2201331 0 0 0 0 2201331 7951688 0 0 0 0 0 0 0 0 0 0 0 0 0 2201331 0 0 0 0 2201331 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2201331 0 0 0 0 2201331 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2201331 0 0 0 0 2201331 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2201331 0 0 0 0 2201331 0 0 0 0 0 0 0 0 0 0 0 0 0 7951688 7951688 7951688 0 0 7951688 7951688 7951688 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
-  def load(source: String): RgbImage = new FileRgbImageLoader().load(source)
+  def load(source: String): RgbImage = new FileRgbImageLoader(source).load()
 
   test("Basic import test - png - square") {
     val image: RgbImage = load(imageCowboyPath)

@@ -16,4 +16,11 @@ class MixedFilter(filters: Seq[ImageFilter]) extends ImageFilter {
    */
   override def filter(item: GreyscaleImage): GreyscaleImage =
     filters.foldLeft(item)((accumulator, filter) => filter.filter(accumulator))
+
+  /**
+   * Returns all filters.
+   */
+  def get(): Seq[ImageFilter] = {
+    filters
+  }
 }
