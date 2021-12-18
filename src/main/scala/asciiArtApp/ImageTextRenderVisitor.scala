@@ -1,6 +1,6 @@
 package asciiArtApp
 
-import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
+import asciiArtApp.models.image.grid.GreyscaleImage
 import asciiArtApp.models.image.visitor.ImageVisitor
 
 /**
