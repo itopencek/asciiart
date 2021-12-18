@@ -11,6 +11,7 @@ import asciiArtApp.models.image.grid.GreyscaleImage
 class MixedFilter(filters: Seq[ImageFilter]) extends ImageFilter {
   /**
    * Applies all filters on {@link GreyscaleImage}.
+   *
    * @param item {@link GreyscaleImage} to apply filters to
    * @return filtered {@link GreyscaleImage}
    */

@@ -8,9 +8,24 @@ import asciiArtApp.models.pixel.char.GreyscalePixel
 
 import scala.collection.mutable.ArrayBuffer
 
+/**
+ * Specific {@link ImageFilter}, which inverts greyscale value of {@link GreyscalePixel}.
+ */
 class InvertFilter extends ImageFilter {
-  def convert(value: Int): GreyscalePixel = new ToAsciiPixelConvertor().convert(value)
+  /**
+   * Gets specific {@link GreyscalePixel} for given greyscale value.
+   *
+   * @param value {@link Int} greyscale value
+   * @return {@link GreyscalePixel}
+   */
+  private def convert(value: Int): GreyscalePixel = new ToAsciiPixelConvertor().convert(value)
 
+  /**
+   * Inverts {@link GreyscaleImage}.
+   *
+   * @param item {@link GreyscaleImage} to invert
+   * @return {@link GreyscaleImage} inverted
+   */
   override def filter(item: GreyscaleImage): GreyscaleImage = {
     val data = ArrayBuffer[GreyscalePixel]()
     item.foreach(pixel => {
