@@ -31,7 +31,7 @@ class FlipFilter(flip: FlipEnum) extends ImageFilter {
       data = flipAxisY(item, data)
     }
 
-    item.newImage(GreyscaleGrid(width, data.toArray))
+    item.newImage(GreyscaleGrid(width, data.toArray[GreyscalePixel]))
   }
 
   /**

@@ -20,8 +20,9 @@ class ToAsciiImageConvertorTest extends FunSuite {
 
   test("Test basic conversion") {
     val result = imageConvertor(imageColors)
-    val asciiImage = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel("Z".head), GreyscalePixel("#".head),
-      GreyscalePixel(";".head), GreyscalePixel("|".head), GreyscalePixel(" ".head), GreyscalePixel("$".head))))
+    val asciiImage = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel("Z".head, 76),
+      GreyscalePixel("#".head, 32), GreyscalePixel(";".head, 226), GreyscalePixel("|".head, 154),
+      GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
 
     assert(result == asciiImage)
   }

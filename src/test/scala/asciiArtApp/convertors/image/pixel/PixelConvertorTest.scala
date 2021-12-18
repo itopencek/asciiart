@@ -15,21 +15,21 @@ class PixelConvertorTest extends FunSuite {
 
   test("With small table") {
     val result = convert(smallTable, RGBPixel(255, 0, 0))
-    assert(result == GreyscalePixel("@".head))
+    assert(result == GreyscalePixel("@".head, 76))
   }
 
   test("With small table 2") {
     val result = convert(smallTable, RGBPixel(128, 128, 128))
-    assert(result == GreyscalePixel("*".head))
+    assert(result == GreyscalePixel("*".head, 127))
   }
 
   test("With big table") {
     val result = convert(bigTable, RGBPixel(128, 128, 128))
-    assert(result == GreyscalePixel("k".head))
+    assert(result == GreyscalePixel("k".head, 127))
   }
 
   test("With big table 2") {
     val result = convert(bigTable, RGBPixel(255, 255, 255))
-    assert(result == GreyscalePixel(" ".head))
+    assert(result == GreyscalePixel(" ".head, 255))
   }
 }
