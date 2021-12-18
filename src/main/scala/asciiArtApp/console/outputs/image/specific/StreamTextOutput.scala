@@ -5,6 +5,11 @@ import asciiArtApp.console.outputs.Output
 import asciiArtApp.models.image.grid.GreyscaleImage
 import exporters.text.concrete.StreamTextExporter
 
+/**
+ * Outputs {@link GreyscaleImage} to stream.
+ *
+ * @param exporter exporter type to use
+ */
 class StreamTextOutput(exporter: StreamTextExporter) extends Output[GreyscaleImage] {
   def visit(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitAsciiImage(image)
   def export(item: String): Unit = exporter.`export`(item)

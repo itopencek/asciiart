@@ -13,7 +13,7 @@ import asciiArtApp.models.`enum`.FlipEnum
 import java.io.File
 
 /**
- * {@link Parser} for String parameters in console.
+ * {@link Parser} used for String parameters in console.
  */
 class ConsoleParser extends Parser[String] {
   private val filters = List[ImageFilter](new GridIdentityFilter())
