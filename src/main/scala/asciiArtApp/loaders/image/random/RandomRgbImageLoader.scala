@@ -8,10 +8,30 @@ import asciiArtApp.models.pixel.rgb.RGBPixel
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
+/**
+ * Loads random {@link RgbImage}.
+ */
 class RandomRgbImageLoader extends RgbImageLoader {
+  /**
+   * Generates random {@link Int}.
+   *
+   * @param upTo max size of random {@link Int}
+   * @return random {@link Int}
+   */
   private def randInt(upTo: Int): Int = new Random().nextInt(upTo - 1) + 1
+
+  /**
+   * Generates random {@link RGBPixel}.
+   *
+   * @return random {@link RGBPixel}
+   */
   private def randPixel(): RGBPixel = RGBPixel(randInt(255), randInt(255), randInt(255))
 
+  /**
+   * Generates random {@link RgbImage}.
+   *
+   * @return generated {@link RgbImage}
+   */
   override def load(): RgbImage = {
     val width = randInt(300)
     val height = randInt(300)

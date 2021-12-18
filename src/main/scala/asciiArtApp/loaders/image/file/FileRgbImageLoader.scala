@@ -9,6 +9,11 @@ import java.io.File
 import javax.imageio.ImageIO
 import scala.collection.mutable.ArrayBuffer
 
+/**
+ * Loads {@link RgbImage} from given {@link String} path.
+ *
+ * @param source {@link String} path to load {@link RgbImage} from
+ */
 class FileRgbImageLoader(source: String) extends RgbImageLoader {
   override def load(): RgbImage = {
     val img = ImageIO.read(new File(source))
