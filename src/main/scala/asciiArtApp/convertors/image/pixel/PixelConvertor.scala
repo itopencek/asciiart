@@ -19,14 +19,14 @@ class PixelConvertor(asciiCharsTable: String) extends Convertor[RGBPixel, Greysc
    * @return converted {@link GreyscalePixel}
    */
   override def convert(item: RGBPixel): GreyscalePixel = {
-    val greyScale = (0.3 * item.r) + (0.59 * item.g) + (0.11 * item.b)
+    val greyscale = (0.3 * item.r) + (0.59 * item.g) + (0.11 * item.b)
 
     if (rampLength < 3) {
       throw new Exception("Char table is too small, needs to have at least 3 chars. Has " + rampLength + ".")
     }
-    val index = ((rampLength - 1) * greyScale / 255).toInt
+    val index = ((rampLength - 1) * greyscale / 255).toInt
 
-    GreyscalePixel(asciiCharsTable.charAt(index), greyScale.toInt)
+    GreyscalePixel(asciiCharsTable.charAt(index), greyscale.toInt)
   }
 
   /**
@@ -36,9 +36,9 @@ class PixelConvertor(asciiCharsTable: String) extends Convertor[RGBPixel, Greysc
    * @param greyscale value to convert pixel to
    * @return converted {@link GreyscalePixel}
    */
-  def convert(item: GreyscalePixel, greyScale: Int): GreyscalePixel = {
-    val index: Int = (rampLength - 1) * greyScale / 255
+  def convert(item: GreyscalePixel, greyscale: Int): GreyscalePixel = {
+    val index: Int = (rampLength - 1) * greyscale / 255
 
-    GreyscalePixel(asciiCharsTable.charAt(index), greyScale)
+    GreyscalePixel(asciiCharsTable.charAt(index), greyscale)
   }
 }
