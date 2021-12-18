@@ -6,7 +6,7 @@ import asciiArtApp.models.pixel.Pixel
 import asciiArtApp.models.pixel.char.GreyscalePixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
-case class RgbImage(width: Int, height: Int, grid: RgbGrid) extends PixelGridImage[GreyscalePixel] {
+case class RgbImage(width: Int, height: Int, grid: RgbGrid) extends PixelGridImage {
   override def getHeight(): Int = height
 
   override def getWidth(): Int = width
