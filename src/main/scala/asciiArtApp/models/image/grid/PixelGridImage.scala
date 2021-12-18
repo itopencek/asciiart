@@ -1,7 +1,7 @@
-package asciiArtApp.models.images.grid
+package asciiArtApp.models.image.grid
 
 import asciiArtApp.models.grid.pixel.PixelGrid
-import asciiArtApp.models.images.Image
+import asciiArtApp.models.image.Image
 import asciiArtApp.models.pixel.Pixel
 
 trait PixelGridImage extends Image[PixelGrid] {

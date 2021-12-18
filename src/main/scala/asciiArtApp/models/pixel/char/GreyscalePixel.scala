@@ -2,15 +2,9 @@ package asciiArtApp.models.pixel.char
 
 import asciiArtApp.models.pixel.Pixel
 
-case class GreyscalePixel(character: Char) extends Pixel {
-  private var brightness: Int = 0
-
-  def setBrightness(value: Int): Unit = {
-    value match {
-      case x if x > 255 => brightness = 255
-      case x if x < 0 => brightness = 0
-      case _ => brightness = value
-    }
+case class GreyscalePixel(character: Char, brightness: Int) extends Pixel {
+  def setBrightness(value: Int): GreyscalePixel = {
+    GreyscalePixel(character, value)
   }
 
   def getBrightness(): Int = {

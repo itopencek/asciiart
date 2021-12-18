@@ -1,8 +1,7 @@
-package asciiArtApp.models.images.grid
+package asciiArtApp.models.image.grid
 
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
-import asciiArtApp.models.images.visitor.ImageVisitor
-import asciiArtApp.models.pixel.Pixel
+import asciiArtApp.models.image.visitor.ImageVisitor
 import asciiArtApp.models.pixel.char.GreyscalePixel
 
 case class GreyscaleImage(width: Int, height: Int, grid: GreyscaleGrid) extends PixelGridImage {
@@ -19,7 +18,11 @@ case class GreyscaleImage(width: Int, height: Int, grid: GreyscaleGrid) extends 
   override def accept[U](visitor: ImageVisitor[U]): U =
     visitor.visitAsciiImage(this)
 
-  override def getPixel(x: Int, y: Int): Pixel = {
+  override def getPixel(x: Int, y: Int): GreyscalePixel = {
     grid.get(x, y)
+  }
+
+  def newImage(data: GreyscaleGrid): GreyscaleImage = {
+    GreyscaleImage(width, height, data)
   }
 }

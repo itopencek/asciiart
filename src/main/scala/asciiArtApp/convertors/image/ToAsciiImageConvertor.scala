@@ -1,7 +1,7 @@
 package asciiArtApp.convertors.image
 import asciiArtApp.convertors.image.pixel.ToAsciiPixelConvertor
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
-import asciiArtApp.models.images.grid.{GreyscaleImage, RgbImage}
+import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 import asciiArtApp.models.pixel.char.GreyscalePixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 

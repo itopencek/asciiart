@@ -1,6 +1,6 @@
-package asciiArtApp.models.images.visitor
+package asciiArtApp.models.image.visitor
 
-import asciiArtApp.models.images.grid.{GreyscaleImage, RgbImage}
+import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 
 trait ImageVisitor[T] {
   def visitAsciiImage(image: GreyscaleImage): T

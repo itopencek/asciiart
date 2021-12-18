@@ -2,7 +2,7 @@ package asciiArtApp.loaders
 
 import asciiArtApp.loaders.image.file.FileRgbImageLoader
 import asciiArtApp.models.grid.pixel.RgbGrid
-import asciiArtApp.models.images.grid.RgbImage
+import asciiArtApp.models.image.grid.RgbImage
 import asciiArtApp.models.pixel.rgb.RGBPixel
 import org.scalatest.FunSuite
 

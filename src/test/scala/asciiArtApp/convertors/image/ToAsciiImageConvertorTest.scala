@@ -2,7 +2,7 @@ package asciiArtApp.convertors.image
 
 import asciiArtApp.loaders.image.file.FileRgbImageLoader
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
-import asciiArtApp.models.images.grid.{GreyscaleImage, RgbImage}
+import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 import asciiArtApp.models.pixel.char.GreyscalePixel
 import org.scalatest.FunSuite
 

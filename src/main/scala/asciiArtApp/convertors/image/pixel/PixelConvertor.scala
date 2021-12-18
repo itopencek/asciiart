@@ -30,13 +30,12 @@ class PixelConvertor(asciiCharsTable: String) extends Convertor[RGBPixel, Greysc
   }
 
   /**
-   * Converts {@link GreyscalePixel} to specific greyscale value.
+   * Returns {@link GreyscalePixel} with specific greyscale value.
    *
-   * @param item {@link GreyscalePixel} to convert
    * @param greyscale value to convert pixel to
    * @return converted {@link GreyscalePixel}
    */
-  def convert(item: GreyscalePixel, greyscale: Int): GreyscalePixel = {
+  def convert(greyscale: Int): GreyscalePixel = {
     val index: Int = (rampLength - 1) * greyscale / 255
 
     GreyscalePixel(asciiCharsTable.charAt(index), greyscale)

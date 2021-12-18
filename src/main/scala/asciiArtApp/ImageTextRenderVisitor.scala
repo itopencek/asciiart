@@ -1,7 +1,7 @@
 package asciiArtApp
 
-import asciiArtApp.models.images.grid.{GreyscaleImage, RgbImage}
-import asciiArtApp.models.images.visitor.ImageVisitor
+import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
+import asciiArtApp.models.image.visitor.ImageVisitor
 
 class ImageTextRenderVisitor extends ImageVisitor[String] {
   override def visitAsciiImage(image: GreyscaleImage): String = {

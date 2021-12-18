@@ -2,7 +2,7 @@ package asciiArtApp.loaders.image.file
 
 import asciiArtApp.loaders.image.RgbImageLoader
 import asciiArtApp.models.grid.pixel.RgbGrid
-import asciiArtApp.models.images.grid.RgbImage
+import asciiArtApp.models.image.grid.RgbImage
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
 import java.io.File
