@@ -16,5 +16,6 @@ class StreamTextOutput(exporter: StreamTextExporter) extends Output[GreyscaleIma
 
   override def output(item: GreyscaleImage): Unit = {
     export(visit(item))
+    exporter.close()
   }
 }
