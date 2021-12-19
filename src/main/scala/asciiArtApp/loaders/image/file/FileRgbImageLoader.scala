@@ -30,6 +30,10 @@ class FileRgbImageLoader(source: String) extends RgbImageLoader {
         val g = (rgb >> 8) & 0xFF
         val b = (rgb >> 0) & 0xFF
 
+        if (r > 255 | g > 255 | b > 255) {
+          throw new IndexOutOfBoundsException("Error loading RGB pixel.")
+        }
+
         data.append(RGBPixel(r, g, b))
       }
     }

@@ -34,8 +34,4 @@ class ToAsciiPixelConvertorTest extends FunSuite {
 
     assert(result == GreyscalePixel("c".head, 119))
   }
-
-  test("Convert error or other edge case? Non existent?") {
-
-  }
 }
