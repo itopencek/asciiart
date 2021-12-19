@@ -10,6 +10,6 @@ import asciiArtApp.models.image.grid.GreyscaleImage
  * Note: Used when user doesn't want any filters.
  * </p>
  */
-class GridIdentityFilter extends IdentityFilter[GreyscaleImage] with ImageFilter {
+class ImageIdentityFilter extends IdentityFilter[GreyscaleImage] with ImageFilter {
 
 }

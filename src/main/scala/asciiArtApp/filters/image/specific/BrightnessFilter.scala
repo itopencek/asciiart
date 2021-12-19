@@ -33,6 +33,7 @@ class BrightnessFilter(brightness: Int) extends ImageFilter {
       value match {
         case x if x > 255 => value = 255
         case x if x < 0 => value = 0
+        case _ => value = value
       }
 
       data.append(convert(value))

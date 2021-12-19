@@ -3,7 +3,7 @@ package asciiArtApp.console
 import asciiArtApp.console.outputs.image.ImageOutput
 import asciiArtApp.console.outputs.image.specific.{ConsoleOutput, FileOutput}
 import asciiArtApp.filters.image.ImageFilter
-import asciiArtApp.filters.image.defaults.GridIdentityFilter
+import asciiArtApp.filters.image.defaults.ImageIdentityFilter
 import asciiArtApp.filters.image.specific.{BrightnessFilter, FlipFilter, InvertFilter}
 import asciiArtApp.loaders.image.RgbImageLoader
 import asciiArtApp.loaders.image.file.specific.{BitmapLoader, JpgLoader, PngLoader}
@@ -16,7 +16,7 @@ import java.io.File
  * {@link Parser} used for String parameters in console.
  */
 class ConsoleParser extends Parser[String] {
-  private val filters = List[ImageFilter](new GridIdentityFilter())
+  private val filters = List[ImageFilter](new ImageIdentityFilter())
   private val outputs = List[ImageOutput]()
   private var alreadySetInput = false
   private var loader: RgbImageLoader = new RandomRgbImageLoader
