@@ -5,8 +5,9 @@ import asciiArtApp.models.grid.pixel.RgbGrid
 import asciiArtApp.models.image.grid.RgbImage
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
+import java.awt.image.BufferedImage
 import java.io.File
-import javax.imageio.ImageIO
+import javax.imageio.{IIOException, ImageIO}
 import scala.collection.mutable.ArrayBuffer
 
 /**
@@ -14,9 +15,14 @@ import scala.collection.mutable.ArrayBuffer
  *
  * @param source {@link String} path to load {@link RgbImage} from
  */
-class FileRgbImageLoader(source: String) extends RgbImageLoader {
-  override def load(): RgbImage = {
-    val img = ImageIO.read(new File(source))
+abstract class FileRgbImageLoader extends RgbImageLoader {
+  /**
+   * Loads {@link RgbImage} from {@link BufferedImage}.
+   *
+   * @param img {@link BufferedImage} to load
+   * @return {@link RgbImage} loaded
+   */
+  protected def handleImage(img: BufferedImage): RgbImage = {
     val width = img.getWidth
     val height = img.getHeight
     val data = new ArrayBuffer[RGBPixel]()
@@ -39,5 +45,20 @@ class FileRgbImageLoader(source: String) extends RgbImageLoader {
     }
 
     RgbImage(width, height, RgbGrid(width, data.toArray[RGBPixel]))
+  }
+
+  /**
+   * Reads image from given path. Implementation for JPG, PNG and BMP formats.
+   *
+   * @param path {@link String} path to image
+   * @return {@link BufferedImage} loaded universal format
+   * @throws {@link IllegalArgumentException} when path can't be read
+   */
+  protected def readImage(path: String): BufferedImage = {
+    try {
+      ImageIO.read(new File(path))
+    } catch {
+      case e: IIOException => throw new IllegalArgumentException("Can't read path. " + e.toString)
+    }
   }
 }

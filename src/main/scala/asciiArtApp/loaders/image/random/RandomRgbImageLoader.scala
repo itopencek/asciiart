@@ -13,7 +13,7 @@ import scala.util.Random
  */
 class RandomRgbImageLoader extends RgbImageLoader {
   /**
-   * Generates random {@link Int}.
+   * Generates random {@link Int}. Can never be zero.
    *
    * @param upTo max size of random {@link Int}
    * @return random {@link Int}

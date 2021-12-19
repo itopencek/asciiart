@@ -1,6 +1,6 @@
 package asciiArtApp.convertors.image
 
-import asciiArtApp.loaders.image.file.FileRgbImageLoader
+import asciiArtApp.loaders.image.file.specific.{BitmapLoader, JpgLoader, PngLoader}
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
 import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 import asciiArtApp.models.pixel.char.GreyscalePixel
@@ -10,13 +10,17 @@ import java.io.File
 
 class ToAsciiImageConvertorTest extends FunSuite {
   def imageConvertor(item: RgbImage): GreyscaleImage = new ToAsciiImageConvertor().convert(item)
-  def load(source: String): RgbImage = new FileRgbImageLoader(source).load()
+  // all image loaders
+  def loadJPG(source: String): RgbImage = new JpgLoader(source).load()
+  def loadPNG(source: String): RgbImage = new PngLoader(source).load()
+  def loadBMP(source: String): RgbImage = new BitmapLoader(source).load()
 
+  // images for testing
   val baseUrl = "src/test/resources"
-  val imageColors: RgbImage = load(new File(baseUrl + "/colors.bmp").getAbsolutePath)
-  val imageOop: RgbImage = load(new File(baseUrl + "/bi-oop.jpg").getAbsolutePath)
-  val imageCowboy: RgbImage = load(new File(baseUrl + "/image-cowboy.png").getAbsolutePath)
-  val imageUsa: RgbImage = load(new File(baseUrl + "/statue-of-liberty.jpg").getAbsolutePath)
+  val imageColors: RgbImage = loadBMP(new File(baseUrl + "/colors.bmp").getAbsolutePath)
+  val imageOop: RgbImage = loadJPG(new File(baseUrl + "/bi-oop.jpg").getAbsolutePath)
+  val imageCowboy: RgbImage = loadPNG(new File(baseUrl + "/image-cowboy.png").getAbsolutePath)
+  val imageUsa: RgbImage = loadJPG(new File(baseUrl + "/statue-of-liberty.jpg").getAbsolutePath)
 
   test("Test basic conversion") {
     val result = imageConvertor(imageColors)

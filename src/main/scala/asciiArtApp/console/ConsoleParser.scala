@@ -6,7 +6,7 @@ import asciiArtApp.filters.grid.ImageFilter
 import asciiArtApp.filters.grid.defaults.GridIdentityFilter
 import asciiArtApp.filters.grid.specific.{BrightnessFilter, FlipFilter, InvertFilter}
 import asciiArtApp.loaders.image.RgbImageLoader
-import asciiArtApp.loaders.image.file.FileRgbImageLoader
+import asciiArtApp.loaders.image.file.specific.{BitmapLoader, JpgLoader, PngLoader}
 import asciiArtApp.loaders.image.random.RandomRgbImageLoader
 import asciiArtApp.models.`enum`.FlipEnum
 
@@ -43,7 +43,7 @@ class ConsoleParser extends Parser[String] {
         parse(tail)
       case "--image" :: path :: tail =>
         checkInputArg()
-        loader = new FileRgbImageLoader(path)
+        setImageLoader(path)
         parse(tail)
       case "--output-file" :: path :: tail =>
         outputs :+ new FileOutput(new File(path))
@@ -56,7 +56,7 @@ class ConsoleParser extends Parser[String] {
   }
 
   /**
-   * Checks if input argument was already parsed, if yes then throws IllegalArgumentException.
+   * Checks if input argument was already parsed, if yes then throws {@link IllegalArgumentException}.
    */
   private def checkInputArg(): Unit = {
     if (alreadySetInput) {
@@ -70,7 +70,7 @@ class ConsoleParser extends Parser[String] {
   def getOutputs: Seq[ImageOutput] = outputs
 
   /**
-   * Returns {@link RgbImageLoader} if it was set, otherwise throws IllegalArgumentException.
+   * Returns {@link RgbImageLoader} if it was set, otherwise throws {@link IllegalArgumentException}.
    */
   def getLoader: RgbImageLoader = {
     if (!alreadySetInput) {
@@ -78,5 +78,17 @@ class ConsoleParser extends Parser[String] {
     }
 
     loader
+  }
+
+  /**
+   * Sets correct image loader based on extension. If extension is unknown throws {@link IllegalArgumentException}.
+   */
+  private def setImageLoader(source: String): Unit = {
+    source.takeRight(3) match {
+      case "jpg" => loader = new JpgLoader(source)
+      case "png" => loader = new PngLoader(source)
+      case "bmp" => loader = new BitmapLoader(source)
+      case extension => throw new IllegalArgumentException("Unsupported file extension " + extension)
+    }
   }
 }
