@@ -11,7 +11,7 @@ case class GreyscalePixel(character: Char, brightness: Int) extends Pixel {
     brightness
   }
 
-  override def getInt(): Int = character.toInt
+  def getChar(): Char = character
 
   def get(): Char = character
 }

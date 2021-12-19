@@ -19,7 +19,7 @@ class ImageTextRenderVisitor extends ImageVisitor[String] {
 
     image.foreach(pixel =>
     {
-      response += pixel.getInt()
+      response += pixel.getChar()
 
       if (num % image.getWidth() == 0 && num != 0) {
         response += "\n"
