@@ -1,7 +1,7 @@
-package asciiArtApp.filters.grid.defaults
+package asciiArtApp.filters.image.defaults
 
 import asciiArtApp.filters.defaults.IdentityFilter
-import asciiArtApp.filters.grid.ImageFilter
+import asciiArtApp.filters.image.ImageFilter
 import asciiArtApp.models.image.grid.GreyscaleImage
 
 /**

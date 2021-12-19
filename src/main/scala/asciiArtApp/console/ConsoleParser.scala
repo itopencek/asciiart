@@ -2,9 +2,9 @@ package asciiArtApp.console
 
 import asciiArtApp.console.outputs.image.ImageOutput
 import asciiArtApp.console.outputs.image.specific.{ConsoleOutput, FileOutput}
-import asciiArtApp.filters.grid.ImageFilter
-import asciiArtApp.filters.grid.defaults.GridIdentityFilter
-import asciiArtApp.filters.grid.specific.{BrightnessFilter, FlipFilter, InvertFilter}
+import asciiArtApp.filters.image.ImageFilter
+import asciiArtApp.filters.image.defaults.GridIdentityFilter
+import asciiArtApp.filters.image.specific.{BrightnessFilter, FlipFilter, InvertFilter}
 import asciiArtApp.loaders.image.RgbImageLoader
 import asciiArtApp.loaders.image.file.specific.{BitmapLoader, JpgLoader, PngLoader}
 import asciiArtApp.loaders.image.random.RandomRgbImageLoader

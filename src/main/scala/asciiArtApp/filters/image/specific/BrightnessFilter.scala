@@ -1,6 +1,6 @@
-package asciiArtApp.filters.grid.specific
+package asciiArtApp.filters.image.specific
 
-import asciiArtApp.filters.grid.ImageFilter
+import asciiArtApp.filters.image.ImageFilter
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
 import asciiArtApp.models.image.grid.GreyscaleImage
 import asciiArtApp.models.pixel.char.GreyscalePixel

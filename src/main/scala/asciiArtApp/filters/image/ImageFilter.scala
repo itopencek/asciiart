@@ -1,4 +1,4 @@
-package asciiArtApp.filters.grid
+package asciiArtApp.filters.image
 
 import asciiArtApp.filters.Filter
 import asciiArtApp.models.image.grid.GreyscaleImage

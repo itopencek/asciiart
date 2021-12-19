@@ -4,8 +4,8 @@ import asciiArtApp.console.ConsoleParser
 import asciiArtApp.console.outputs.image.ImageOutput
 import asciiArtApp.console.outputs.image.mixed.MixedOutput
 import asciiArtApp.convertors.image.ToAsciiImageConvertor
-import asciiArtApp.filters.grid.ImageFilter
-import asciiArtApp.filters.grid.mixed.MixedFilter
+import asciiArtApp.filters.image.ImageFilter
+import asciiArtApp.filters.image.mixed.MixedFilter
 import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 
 object Main extends App {
