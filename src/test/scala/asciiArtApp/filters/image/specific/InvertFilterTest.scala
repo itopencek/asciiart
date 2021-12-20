@@ -69,6 +69,17 @@ class InvertFilterTest extends FunSuite {
     assert(expected == invertedString)
   }
 
+  test("Invert invert image") {
+    // black - white
+    val image =
+      GreyscaleImage(1, 2, GreyscaleGrid(1, Array(GreyscalePixel("$".head, 0), GreyscalePixel(" ".head, 255))))
+
+    var inverted = invert(image)
+    inverted = invert(inverted)
+
+    assert(image == inverted)
+  }
+
   private def loadFile(path: String): String = {
     val source = scala.io.Source.fromFile(path)
     try source.mkString finally source.close()

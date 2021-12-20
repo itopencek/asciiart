@@ -20,11 +20,11 @@ class ImageTextRenderVisitor extends ImageVisitor[String] {
     image.foreach(pixel =>
     {
       response += pixel.getChar()
+      num += 1
 
-      if (num % image.getWidth() == 0 && num != 0) {
+      if (num % image.getWidth() == 0) {
         response += "\n"
       }
-      num += 1
     })
 
     response
