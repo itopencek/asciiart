@@ -17,7 +17,7 @@ class FileOutputTest extends FunSuite {
 
     exporter.output(image)
 
-    val loaded = loadFile("src/test/resources/test.out")
+    val loaded = loadFile("src/test/resources/test2.out")
     val expected = ""
 
     assert(expected == loaded)
