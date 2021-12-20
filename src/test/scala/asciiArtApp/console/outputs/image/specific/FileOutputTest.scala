@@ -13,7 +13,7 @@ class FileOutputTest extends FunSuite {
     val image =
       GreyscaleImage(0, 0, GreyscaleGrid(0, Array[GreyscalePixel]()))
 
-    val exporter = new FileOutput(new File("src/test/resources/test.out"))
+    val exporter = new FileOutput(new File("src/test/resources/test2.out"))
 
     exporter.output(image)
 
