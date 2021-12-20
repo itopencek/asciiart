@@ -21,13 +21,13 @@ class MixedOutputTest extends FunSuite {
         GreyscalePixel(' ', 255)
       )))
 
-    val exporter = new FileOutput(new File("src/test/resources/exports/test.out"))
-    val exporter2 = new FileOutput(new File("src/test/resources/exports/test2.out"))
+    val exporter = new FileOutput(new File("src/test/resources/exports/test3.out"))
+    val exporter2 = new FileOutput(new File("src/test/resources/exports/test4.out"))
 
     new MixedOutput(Array(exporter, exporter2)).output(image)
 
-    val loaded = loadFile("src/test/resources/exports/test.out")
-    val loaded2 = loadFile("src/test/resources/exports/test2.out")
+    val loaded = loadFile("src/test/resources/exports/test3.out")
+    val loaded2 = loadFile("src/test/resources/exports/test4.out")
     val expected = "$ \n$ \n$ \n"
 
     assert(expected == loaded)

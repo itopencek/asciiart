@@ -6,7 +6,7 @@ import java.io.File
 import scala.io.Source
 
 class FileOutputExporterTest extends FunSuite {
-  private val FILE_PATH = "src/test/resources/exports/test.out"
+  private val FILE_PATH = "src/test/resources/exports/test5.out"
 
   test("Test export text") {
     val exporter = new FileOutputExporter(new File(FILE_PATH))
