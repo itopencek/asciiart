@@ -51,7 +51,10 @@ class ConsoleParser extends Parser[String] {
       case "--output-console" :: tail =>
         outputs :+ new ConsoleOutput()
         parse(tail)
-      case unknownArgument => throw new IllegalArgumentException("Unknown argument(s) used. " + unknownArgument)
+      case Nil =>
+      case unknownArgument =>
+        print(arguments)
+        throw new IllegalArgumentException("Unknown argument(s) used. " + unknownArgument)
     }
   }
 
@@ -67,7 +70,12 @@ class ConsoleParser extends Parser[String] {
 
   def getFilters: Seq[ImageFilter] = filters
 
-  def getOutputs: Seq[ImageOutput] = outputs
+  def getOutputs: Seq[ImageOutput] = {
+    if (outputs.isEmpty) {
+      throw new IllegalArgumentException("No output.")
+    }
+    outputs
+  }
 
   /**
    * Returns {@link RgbImageLoader} if it was set, otherwise throws {@link IllegalArgumentException}.
