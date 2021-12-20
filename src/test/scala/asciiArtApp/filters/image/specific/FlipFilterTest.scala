@@ -21,7 +21,7 @@ class FlipFilterTest extends FunSuite {
   def filter(axis: FlipEnum, image: GreyscaleImage): GreyscaleImage = new FlipFilter(axis).filter(image)
   def getString(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitGreyscaleImage(image)
 
-  test("Flip small image") {
+  test("Test flip small image") {
     val image =
       GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
 
@@ -91,7 +91,7 @@ class FlipFilterTest extends FunSuite {
     assert(expected == filteredString)
   }
 
-  test("Flip YY image") {
+  test("Test flip YY image") {
     val image =
       GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
 
@@ -101,7 +101,7 @@ class FlipFilterTest extends FunSuite {
     assert(image == filtered2)
   }
 
-  test("Flip YYY image") {
+  test("Test flip YYY image") {
     val image =
       GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
 
@@ -115,7 +115,7 @@ class FlipFilterTest extends FunSuite {
     assert(expected == filtered)
   }
 
-  test("Flip empty image") {
+  test("Test flip empty image") {
     val image =
       GreyscaleImage(0, 0, GreyscaleGrid(0, Array[GreyscalePixel]()))
 
