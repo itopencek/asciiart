@@ -1,5 +1,4 @@
-src/test/resources/test.out
-src/test/resources/test2.out
+src/test/resources/exports/*
 
 # Created by https://www.toptal.com/developers/gitignore/api/scala,intellij,sbt,macos,windows,linux
 # Edit at https://www.toptal.com/developers/gitignore?templates=scala,intellij,sbt,macos,windows,linux

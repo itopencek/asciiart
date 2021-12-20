@@ -16,8 +16,8 @@ import java.io.File
  * {@link Parser} used for String parameters in console.
  */
 class ConsoleParser extends Parser[String] {
-  private val filters = List[ImageFilter](new ImageIdentityFilter())
-  private val outputs = List[ImageOutput]()
+  private var filters = List[ImageFilter](new ImageIdentityFilter())
+  private var outputs = List[ImageOutput]()
   private var alreadySetInput = false
   private var loader: RgbImageLoader = new RandomRgbImageLoader
 
@@ -30,13 +30,13 @@ class ConsoleParser extends Parser[String] {
   override def parse(arguments: Seq[String]): Unit = {
     arguments match {
       case "--brightness" :: value :: tail =>
-        filters :+ new BrightnessFilter(value.toInt)
+        filters = filters :+ new BrightnessFilter(value.toInt)
         parse(tail)
       case "--flip" :: axis :: tail =>
-        filters :+ new FlipFilter(FlipEnum.withName(axis))
+        filters = filters :+ new FlipFilter(FlipEnum.withName(axis))
         parse(tail)
-      case "--invert" :: tail => parse(tail)
-        filters :+ new InvertFilter()
+      case "--invert" :: tail =>
+        filters = filters :+ new InvertFilter()
         parse(tail)
       case "--image-random" :: tail =>
         checkInputArg()
@@ -46,14 +46,13 @@ class ConsoleParser extends Parser[String] {
         setImageLoader(path)
         parse(tail)
       case "--output-file" :: path :: tail =>
-        outputs :+ new FileOutput(new File(path))
+        outputs = outputs :+ new FileOutput(new File(path))
         parse(tail)
       case "--output-console" :: tail =>
-        outputs :+ new ConsoleOutput()
+        outputs = outputs :+ new ConsoleOutput()
         parse(tail)
       case Nil =>
       case unknownArgument =>
-        print(arguments)
         throw new IllegalArgumentException("Unknown argument(s) used. " + unknownArgument)
     }
   }

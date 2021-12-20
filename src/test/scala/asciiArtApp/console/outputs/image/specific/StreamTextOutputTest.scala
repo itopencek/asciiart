@@ -17,7 +17,7 @@ class StreamTextOutputTest extends FunSuite {
         GreyscalePixel(' ', 255),
         GreyscalePixel('$', 0))))
 
-    val exporter = new FileOutput(new File("src/test/resources/test.out"))
+    val exporter = new FileOutput(new File("src/test/resources/exports/test.out"))
 
     exporter.output(image)
     assertThrows[Exception](exporter.output(image))
@@ -32,11 +32,11 @@ class StreamTextOutputTest extends FunSuite {
         GreyscalePixel(' ', 255),
         GreyscalePixel('$', 0))))
 
-    val exporter = new FileOutput(new File("src/test/resources/test.out"))
+    val exporter = new FileOutput(new File("src/test/resources/exports/test.out"))
 
     exporter.output(image)
 
-    val loaded = loadFile("src/test/resources/test.out")
+    val loaded = loadFile("src/test/resources/exports/test.out")
     val expected = " $\n $\n $\n"
 
     assert(expected == loaded)
