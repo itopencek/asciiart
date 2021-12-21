@@ -1,7 +1,6 @@
 package asciiArtApp.models.image
 
 import asciiArtApp.models.Entity
-import asciiArtApp.models.image.visitor.ImageVisitor
 
 trait Image[T] extends Entity {
 

@@ -1,12 +1,12 @@
 package asciiArtApp.filters.image.specific
 
-import asciiArtApp.ImageTextRenderVisitor
-import asciiArtApp.convertors.image.ToAsciiImageConvertor
+import asciiArtApp.convertors.image.character.ToAsciiImageConvertor
+import asciiArtApp.convertors.image.rgb.ToGreyscaleImageConvertor
 import asciiArtApp.loaders.image.file.specific.JpgLoader
 import asciiArtApp.models.`enum`.FlipEnum
 import asciiArtApp.models.`enum`.FlipEnum.FlipEnum
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
-import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
+import asciiArtApp.models.image.grid.{CharImage, GreyscaleImage, RgbImage}
 import asciiArtApp.models.pixel.char.GreyscalePixel
 import org.scalatest.FunSuite
 
@@ -17,16 +17,16 @@ class FlipFilterTest extends FunSuite {
   val pathToFreedom: String = new File("src/test/resources/statue-of-liberty.jpg").getAbsolutePath
 
   def loadJPG(source: String): RgbImage = new JpgLoader(source).load()
-  def convertor(item: RgbImage): GreyscaleImage = new ToAsciiImageConvertor().convert(item)
+  def convertor(item: RgbImage): GreyscaleImage = new ToGreyscaleImageConvertor().convert(item)
   def filter(axis: FlipEnum, image: GreyscaleImage): GreyscaleImage = new FlipFilter(axis).filter(image)
-  def getString(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitGreyscaleImage(image)
+  def getString(image: GreyscaleImage): String = toString(new ToAsciiImageConvertor().convert(image))
 
   test("Test flip small image") {
     val image =
-      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
+      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(255), GreyscalePixel(0))))
 
     val expected =
-      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel("$".head, 0), GreyscalePixel(" ".head, 255))))
+      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(0), GreyscalePixel(255))))
 
     val filtered = filter(FlipEnum.Y, image)
 
@@ -93,7 +93,7 @@ class FlipFilterTest extends FunSuite {
 
   test("Test flip YY image") {
     val image =
-      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
+      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(255), GreyscalePixel(0))))
 
     val filtered = filter(FlipEnum.Y, image)
     val filtered2 = filter(FlipEnum.Y, filtered)
@@ -103,10 +103,10 @@ class FlipFilterTest extends FunSuite {
 
   test("Test flip YYY image") {
     val image =
-      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
+      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(255), GreyscalePixel(0))))
 
     val expected =
-      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel("$".head, 0), GreyscalePixel(" ".head, 255))))
+      GreyscaleImage(2, 1, GreyscaleGrid(2, Array(GreyscalePixel(0), GreyscalePixel(255))))
 
     var filtered = filter(FlipEnum.Y, image)
     filtered = filter(FlipEnum.Y, filtered)
@@ -127,5 +127,23 @@ class FlipFilterTest extends FunSuite {
   private def loadFile(path: String): String = {
     val source = scala.io.Source.fromFile(path)
     try source.mkString finally source.close()
+  }
+
+
+  private def toString(item: CharImage): String = {
+    var response = ""
+    var num = 0
+
+    item.foreach(pixel =>
+    {
+      response += pixel.character
+      num += 1
+
+      if (num % item.getWidth() == 0) {
+        response += "\n"
+      }
+    })
+
+    response
   }
 }

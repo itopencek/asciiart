@@ -1,5 +1,6 @@
-package asciiArtApp.convertors.image
-import asciiArtApp.convertors.image.pixel.ToAsciiPixelConvertor
+package asciiArtApp.convertors.image.rgb
+
+import asciiArtApp.convertors.image.rgb.pixel.RgbPixelConvertor
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
 import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 import asciiArtApp.models.pixel.char.GreyscalePixel
@@ -10,11 +11,11 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * Implementation of {@link ImageConvertor}.
  */
-class ToAsciiImageConvertor extends ImageConvertor {
+class ToGreyscaleImageConvertor extends ImageConvertor {
   /**
-   * PixelConvertor to convert individual {@link RGBPixel}s.
+   * PixelConvertor to convert individual {@link RGBPixel}s to {@link GreyscalePixel}s.
    */
-  private def pixelConvertor = new ToAsciiPixelConvertor
+  private def pixelConvertor = new RgbPixelConvertor
 
   /**
    * Converts {@link RGBPixel} to {@link GreyscalePixel}.

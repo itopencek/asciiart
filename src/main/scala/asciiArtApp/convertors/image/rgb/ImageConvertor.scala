@@ -1,4 +1,4 @@
-package asciiArtApp.convertors.image
+package asciiArtApp.convertors.image.rgb
 
 import asciiArtApp.convertors.Convertor
 import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
@@ -6,6 +6,4 @@ import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
 /**
  * {@link Convertor}, which converts {@link RgbImage} to {@link GreyscaleImage}.
  */
-trait ImageConvertor extends Convertor[RgbImage, GreyscaleImage] {
-
-}
+trait ImageConvertor extends Convertor[RgbImage, GreyscaleImage] {}

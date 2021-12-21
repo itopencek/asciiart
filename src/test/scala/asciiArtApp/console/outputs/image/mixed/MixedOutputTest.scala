@@ -2,24 +2,24 @@ package asciiArtApp.console.outputs.image.mixed
 
 import asciiArtApp.console.outputs.image.ImageOutput
 import asciiArtApp.console.outputs.image.specific.ImageTextOutput
-import asciiArtApp.models.grid.pixel.GreyscaleGrid
-import asciiArtApp.models.image.grid.GreyscaleImage
-import asciiArtApp.models.pixel.char.GreyscalePixel
+import asciiArtApp.models.grid.pixel.{CharGrid, CharGridTest}
+import asciiArtApp.models.image.grid.CharImage
+import asciiArtApp.models.pixel.char.CharPixel
 import exporters.text.concrete.FileOutputExporter
 import org.scalatest.FunSuite
 
 import java.io.File
 
 class MixedOutputTest extends FunSuite {
-  test("Test export empty image") {
+  test("Test export image to multiple exports") {
     val image =
-      GreyscaleImage(2, 3, GreyscaleGrid(2,Array(
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255),
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255),
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255)
+      CharImage(2, 3, CharGrid(2,Array(
+        CharPixel('$'),
+        CharPixel(' '),
+        CharPixel('$'),
+        CharPixel(' '),
+        CharPixel('$'),
+        CharPixel(' ')
       )))
 
     val exporter =
@@ -39,13 +39,13 @@ class MixedOutputTest extends FunSuite {
 
   test("Test with no outputs") {
     val image =
-      GreyscaleImage(2, 3, GreyscaleGrid(2,Array(
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255),
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255),
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255)
+      CharImage(2, 3, CharGrid(2,Array(
+        CharPixel('$'),
+        CharPixel(' '),
+        CharPixel('$'),
+        CharPixel(' '),
+        CharPixel('$'),
+        CharPixel(' ')
       )))
 
     new MixedOutput(Array[ImageOutput]()).output(image)

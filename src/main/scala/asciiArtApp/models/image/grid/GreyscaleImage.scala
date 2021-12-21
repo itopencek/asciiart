@@ -1,7 +1,6 @@
 package asciiArtApp.models.image.grid
 
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
-import asciiArtApp.models.image.visitor.ImageVisitor
 import asciiArtApp.models.pixel.char.GreyscalePixel
 
 case class GreyscaleImage(width: Int, height: Int, grid: GreyscaleGrid) extends PixelGridImage {
@@ -14,9 +13,6 @@ case class GreyscaleImage(width: Int, height: Int, grid: GreyscaleGrid) extends 
   def foreach(func: GreyscalePixel => Unit): Unit = {
     grid.foreach(func)
   }
-
-  def accept[U](visitor: ImageVisitor[U]): U =
-    visitor.visitGreyscaleImage(this)
 
   override def getPixel(x: Int, y: Int): GreyscalePixel = {
     grid.get(x, y)

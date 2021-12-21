@@ -1,4 +1,4 @@
-package asciiArtApp.convertors.image
+package asciiArtApp.convertors.image.rgb
 
 import asciiArtApp.loaders.image.file.specific.BitmapLoader
 import asciiArtApp.models.grid.pixel.{GreyscaleGrid, RgbGrid}
@@ -9,8 +9,8 @@ import org.scalatest.FunSuite
 
 import java.io.File
 
-class ToAsciiImageConvertorTest extends FunSuite {
-  def imageConvertor(item: RgbImage): GreyscaleImage = new ToAsciiImageConvertor().convert(item)
+class ToGreyscaleConvertorTest extends FunSuite {
+  def imageConvertor(item: RgbImage): GreyscaleImage = new ToGreyscaleImageConvertor().convert(item)
   def loadBMP(source: String): RgbImage = new BitmapLoader(source).load()
 
   // images for testing
@@ -19,9 +19,9 @@ class ToAsciiImageConvertorTest extends FunSuite {
 
   test("Test basic conversion") {
     val result = imageConvertor(imageColors)
-    val asciiImage = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel("Z".head, 76),
-      GreyscalePixel("#".head, 32), GreyscalePixel(";".head, 226), GreyscalePixel("|".head, 154),
-      GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
+    val asciiImage = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel(76),
+      GreyscalePixel(32), GreyscalePixel(226), GreyscalePixel(154),
+      GreyscalePixel(255), GreyscalePixel( 0))))
 
     assert(result == asciiImage)
   }
@@ -33,9 +33,9 @@ class ToAsciiImageConvertorTest extends FunSuite {
 
     val converted = imageConvertor(image)
 
-    val expectedArray = Array[GreyscalePixel](GreyscalePixel("$".head, 0), GreyscalePixel("$".head, 0),
-      GreyscalePixel("$".head, 0), GreyscalePixel("$".head, 0), GreyscalePixel("$".head, 0),
-      GreyscalePixel("$".head, 0))
+    val expectedArray = Array[GreyscalePixel](GreyscalePixel(0), GreyscalePixel(0),
+      GreyscalePixel(0), GreyscalePixel(0), GreyscalePixel(0),
+      GreyscalePixel(0))
 
     assert(converted == GreyscaleImage(3, 2, GreyscaleGrid(3, expectedArray)))
   }
@@ -47,9 +47,9 @@ class ToAsciiImageConvertorTest extends FunSuite {
 
     val converted = imageConvertor(image)
 
-    val expectedArray = Array[GreyscalePixel](GreyscalePixel(" ".head, 255), GreyscalePixel(" ".head, 255),
-      GreyscalePixel(" ".head, 255), GreyscalePixel(" ".head, 255), GreyscalePixel(" ".head, 255),
-      GreyscalePixel(" ".head, 255))
+    val expectedArray = Array[GreyscalePixel](GreyscalePixel(255), GreyscalePixel(255),
+      GreyscalePixel(255), GreyscalePixel(255), GreyscalePixel(255),
+      GreyscalePixel(255))
 
     assert(converted == GreyscaleImage(3, 2, GreyscaleGrid(3, expectedArray)))
   }

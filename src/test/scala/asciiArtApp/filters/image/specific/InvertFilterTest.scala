@@ -1,10 +1,10 @@
 package asciiArtApp.filters.image.specific
 
-import asciiArtApp.ImageTextRenderVisitor
-import asciiArtApp.convertors.image.ToAsciiImageConvertor
+import asciiArtApp.convertors.image.character.ToAsciiImageConvertor
+import asciiArtApp.convertors.image.rgb.ToGreyscaleImageConvertor
 import asciiArtApp.loaders.image.file.specific.{JpgLoader, PngLoader}
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
-import asciiArtApp.models.image.grid.{GreyscaleImage, RgbImage}
+import asciiArtApp.models.image.grid.{CharImage, GreyscaleImage, RgbImage}
 import asciiArtApp.models.pixel.char.GreyscalePixel
 import org.scalatest.FunSuite
 
@@ -17,17 +17,17 @@ class InvertFilterTest extends FunSuite {
 
   def loadPNG(source: String): RgbImage = new PngLoader(source).load()
   def loadJPG(source: String): RgbImage = new JpgLoader(source).load()
-  def convertor(item: RgbImage): GreyscaleImage = new ToAsciiImageConvertor().convert(item)
+  def convertor(item: RgbImage): GreyscaleImage = new ToGreyscaleImageConvertor().convert(item)
   def invert(image: GreyscaleImage): GreyscaleImage = new InvertFilter().filter(image)
-  def getString(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitGreyscaleImage(image)
+  def getString(image: GreyscaleImage): String = toString(new ToAsciiImageConvertor().convert(image))
 
   test("Invert small image") {
     // black - white
     val image =
-      GreyscaleImage(1, 2, GreyscaleGrid(1, Array(GreyscalePixel("$".head, 0), GreyscalePixel(" ".head, 255))))
+      GreyscaleImage(1, 2, GreyscaleGrid(1, Array(GreyscalePixel(0), GreyscalePixel(255))))
     // white - black
     val expected =
-      GreyscaleImage(1, 2, GreyscaleGrid(1, Array(GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
+      GreyscaleImage(1, 2, GreyscaleGrid(1, Array(GreyscalePixel(255), GreyscalePixel(0))))
 
     val inverted = invert(image)
 
@@ -72,7 +72,7 @@ class InvertFilterTest extends FunSuite {
   test("Invert invert image") {
     // black - white
     val image =
-      GreyscaleImage(1, 2, GreyscaleGrid(1, Array(GreyscalePixel("$".head, 0), GreyscalePixel(" ".head, 255))))
+      GreyscaleImage(1, 2, GreyscaleGrid(1, Array(GreyscalePixel(0), GreyscalePixel(255))))
 
     var inverted = invert(image)
     inverted = invert(inverted)
@@ -83,5 +83,23 @@ class InvertFilterTest extends FunSuite {
   private def loadFile(path: String): String = {
     val source = scala.io.Source.fromFile(path)
     try source.mkString finally source.close()
+  }
+
+
+  private def toString(item: CharImage): String = {
+    var response = ""
+    var num = 0
+
+    item.foreach(pixel =>
+    {
+      response += pixel.character
+      num += 1
+
+      if (num % item.getWidth() == 0) {
+        response += "\n"
+      }
+    })
+
+    response
   }
 }

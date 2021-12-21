@@ -1,9 +1,7 @@
 package asciiArtApp.models.image.grid
 
 import asciiArtApp.models.grid.pixel.RgbGrid
-import asciiArtApp.models.image.visitor.ImageVisitor
 import asciiArtApp.models.pixel.Pixel
-import asciiArtApp.models.pixel.char.GreyscalePixel
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
 case class RgbImage(width: Int, height: Int, grid: RgbGrid) extends PixelGridImage {

@@ -1,11 +1,11 @@
 package asciiArtApp.console.outputs.image
 
 import asciiArtApp.console.outputs.Output
-import asciiArtApp.models.image.grid.GreyscaleImage
+import asciiArtApp.models.image.grid.CharImage
 
 /**
- * {@link Output} for {@link GreyscaleImage}
+ * {@link Output} for {@link CharImage}.
  */
-trait ImageOutput extends Output[GreyscaleImage] {
+trait ImageOutput extends Output[CharImage] {
 
 }

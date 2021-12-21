@@ -10,15 +10,16 @@ import org.scalatest.FunSuite
 class MixedFilterTest extends FunSuite {
   test("Test all filters") {
     val image =
-      GreyscaleImage(2, 3, GreyscaleGrid(2,Array(GreyscalePixel(' ', 255),
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255),
-        GreyscalePixel('$', 0),
-        GreyscalePixel(' ', 255),
-        GreyscalePixel('$', 0))))
+      GreyscaleImage(2, 3, GreyscaleGrid(2,Array(
+        GreyscalePixel(255),
+        GreyscalePixel(0),
+        GreyscalePixel(255),
+        GreyscalePixel(0),
+        GreyscalePixel(255),
+        GreyscalePixel(0))))
 
-    val expected = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel('$', 0), GreyscalePixel('|', 155),
-      GreyscalePixel('$', 0), GreyscalePixel('|', 155), GreyscalePixel('$', 0), GreyscalePixel('|', 155))))
+    val expected = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel(0), GreyscalePixel(155),
+      GreyscalePixel(0), GreyscalePixel(155), GreyscalePixel(0), GreyscalePixel(155))))
 
     val filtered = new MixedFilter(Array(new BrightnessFilter(100), new FlipFilter(FlipEnum.X),
       new InvertFilter())).filter(image)

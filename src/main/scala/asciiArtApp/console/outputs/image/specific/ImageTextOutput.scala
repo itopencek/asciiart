@@ -1,20 +1,36 @@
 package asciiArtApp.console.outputs.image.specific
 
-import asciiArtApp.ImageTextRenderVisitor
 import asciiArtApp.console.outputs.image.ImageOutput
-import asciiArtApp.models.image.grid.GreyscaleImage
+import asciiArtApp.models.image.grid.CharImage
 import exporters.text.TextExporter
 
 /**
- * Outputs {@link GreyscaleImage} to stream.
+ * Outputs {@link CharImage} to {@link TextExporter}.
  *
- * @param exporter exporter type to use
+ * @param exporter type of {@link TextExporter} to use
  */
 class ImageTextOutput(exporter: TextExporter) extends ImageOutput {
-  def visit(image: GreyscaleImage): String = new ImageTextRenderVisitor().visitGreyscaleImage(image)
   def export(item: String): Unit = exporter.`export`(item)
 
-  override def output(item: GreyscaleImage): Unit = {
-    export(visit(item))
+  /**
+   * Outputs {@link CharImage} to {@link TextExporter}.
+   *
+   * @param item {@link CharImage to export}
+   */
+  override def output(item: CharImage): Unit = {
+    var response = ""
+    var num = 0
+
+    item.foreach(pixel =>
+    {
+      response += pixel.character
+      num += 1
+
+      if (num % item.getWidth() == 0) {
+        response += "\n"
+      }
+    })
+
+    export(response)
   }
 }

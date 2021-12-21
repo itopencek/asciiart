@@ -7,9 +7,8 @@ import org.scalatest.FunSuite
 
 class ImageIdentityFilterTest extends  FunSuite {
   test("Returns same image") {
-    val asciiImage = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel("Z".head, 76),
-      GreyscalePixel("#".head, 32), GreyscalePixel(";".head, 226), GreyscalePixel("|".head, 154),
-      GreyscalePixel(" ".head, 255), GreyscalePixel("$".head, 0))))
+    val asciiImage = GreyscaleImage(2, 3, GreyscaleGrid(2, Array(GreyscalePixel(76), GreyscalePixel(32),
+      GreyscalePixel(226), GreyscalePixel(154), GreyscalePixel(255), GreyscalePixel(0))))
 
     val filtered = new ImageIdentityFilter().filter(asciiImage)
 
