@@ -3,6 +3,7 @@ package asciiArtApp.console.outputs.image.specific
 import asciiArtApp.models.grid.pixel.GreyscaleGrid
 import asciiArtApp.models.image.grid.GreyscaleImage
 import asciiArtApp.models.pixel.char.GreyscalePixel
+import exporters.text.concrete.FileOutputExporter
 import org.scalatest.FunSuite
 
 import java.io.File
@@ -17,10 +18,11 @@ class StreamTextOutputTest extends FunSuite {
         GreyscalePixel(' ', 255),
         GreyscalePixel('$', 0))))
 
-    val exporter = new FileOutput(new File("src/test/resources/exports/test.out"))
+    val exporter =
+      new ImageTextOutput(new FileOutputExporter(new File("src/test/resources/exports/test.out")))
 
     exporter.output(image)
-    assertThrows[Exception](exporter.output(image))
+    exporter.output(image)
   }
 
   test("Test export image") {
@@ -32,7 +34,8 @@ class StreamTextOutputTest extends FunSuite {
         GreyscalePixel(' ', 255),
         GreyscalePixel('$', 0))))
 
-    val exporter = new FileOutput(new File("src/test/resources/exports/test.out"))
+    val exporter =
+      new ImageTextOutput(new FileOutputExporter(new File("src/test/resources/exports/test.out")))
 
     exporter.output(image)
 

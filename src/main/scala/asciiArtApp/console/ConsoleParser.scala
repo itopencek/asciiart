@@ -1,7 +1,7 @@
 package asciiArtApp.console
 
 import asciiArtApp.console.outputs.image.ImageOutput
-import asciiArtApp.console.outputs.image.specific.{ConsoleOutput, FileOutput}
+import asciiArtApp.console.outputs.image.specific.ImageTextOutput
 import asciiArtApp.filters.image.ImageFilter
 import asciiArtApp.filters.image.defaults.ImageIdentityFilter
 import asciiArtApp.filters.image.specific.{BrightnessFilter, FlipFilter, InvertFilter}
@@ -9,6 +9,7 @@ import asciiArtApp.loaders.image.RgbImageLoader
 import asciiArtApp.loaders.image.file.specific.{BitmapLoader, JpgLoader, PngLoader}
 import asciiArtApp.loaders.image.random.RandomRgbImageLoader
 import asciiArtApp.models.`enum`.FlipEnum
+import exporters.text.concrete.{FileOutputExporter, StdOutputExporter}
 
 import java.io.File
 
@@ -46,10 +47,10 @@ class ConsoleParser extends Parser[String] {
         setImageLoader(path)
         parse(tail)
       case "--output-file" :: path :: tail =>
-        outputs = outputs :+ new FileOutput(new File(path))
+        outputs = outputs :+ new ImageTextOutput(new FileOutputExporter(new File(path)))
         parse(tail)
       case "--output-console" :: tail =>
-        outputs = outputs :+ new ConsoleOutput()
+        outputs = outputs :+ new ImageTextOutput(new StdOutputExporter())
         parse(tail)
       case Nil =>
       case unknownArgument =>

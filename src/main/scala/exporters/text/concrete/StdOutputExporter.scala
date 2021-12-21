@@ -5,5 +5,10 @@ package exporters.text.concrete
  */
 class StdOutputExporter extends StreamTextExporter(System.out)
 {
+  /**
+   * Overridden close method from {@link StreamTextExporter} to do nothing.
+   */
+  override def close(): Unit = {
 
+  }
 }

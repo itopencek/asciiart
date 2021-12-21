@@ -2,16 +2,20 @@ package asciiArtApp.models.grid.pixel
 
 import asciiArtApp.models.pixel.rgb.RGBPixel
 
-case class RgbGrid(width: Int, grid: Seq[RGBPixel]) extends PixelGrid {
+case class RgbGrid(width: Int, pixels: Seq[RGBPixel]) extends PixelGrid {
   def foreach(func: RGBPixel => Unit): Unit = {
-    grid.foreach(func)
+    pixels.foreach(func)
   }
 
   override def get(x: Int, y: Int): RGBPixel = {
+    if (x < 0 || y < 0) {
+      throw new IndexOutOfBoundsException("Negative values for pixel.")
+    }
+
     val pos = width * y + x
 
-    grid(pos)
+    pixels(pos)
   }
 
-  override def getGrid: Seq[RGBPixel] = grid
+  override def getGrid: Seq[RGBPixel] = pixels
 }

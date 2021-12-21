@@ -27,7 +27,7 @@ class PngLoaderTest extends FunSuite {
     val img = loadPNG(imageCowboyPath)
     var data = ""
 
-    img.foreach(pixel => data += pixel.getInt() + " ")
+    img.foreach(pixel => data += pixel.getRGB() + " ")
     // remove last space
     data = data.dropRight(1)
 

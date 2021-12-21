@@ -1,6 +1,6 @@
 package asciiArtApp.console
 
-import asciiArtApp.console.outputs.image.specific.{ConsoleOutput, FileOutput}
+import asciiArtApp.console.outputs.image.specific.ImageTextOutput
 import asciiArtApp.filters.image.defaults.ImageIdentityFilter
 import asciiArtApp.filters.image.specific.{BrightnessFilter, FlipFilter, InvertFilter}
 import asciiArtApp.loaders.image.RgbImageLoader
@@ -18,16 +18,15 @@ class ConsoleParserTest extends FunSuite {
 
   test("Test with normal args random") {
     val file = "src/test/resources/exports/output.out"
-    val args = List[String](random, invert, flip, "X", flip, "Y", brightness, "100", outFile,
-      file, outConsole)
+    val args = List[String](random, invert, flip, "X", flip, "Y", brightness, "100", outFile, file, outConsole)
 
     val parser = new ConsoleParser()
 
     parser.parse(args)
 
     assert(parser.getLoader.isInstanceOf[RandomRgbImageLoader])
-    assert(parser.getOutputs.head.isInstanceOf[FileOutput])
-    assert(parser.getOutputs(1).isInstanceOf[ConsoleOutput])
+    assert(parser.getOutputs.head.isInstanceOf[ImageTextOutput])
+    assert(parser.getOutputs(1).isInstanceOf[ImageTextOutput])
     assert(parser.getFilters.head.isInstanceOf[ImageIdentityFilter])
     assert(parser.getFilters(1).isInstanceOf[InvertFilter])
     assert(parser.getFilters(2).isInstanceOf[FlipFilter])
@@ -44,7 +43,7 @@ class ConsoleParserTest extends FunSuite {
     parser.parse(args)
 
     assert(parser.getLoader.isInstanceOf[RgbImageLoader])
-    assert(parser.getOutputs.head.isInstanceOf[ConsoleOutput])
+    assert(parser.getOutputs.head.isInstanceOf[ImageTextOutput])
     assert(parser.getFilters.head.isInstanceOf[ImageIdentityFilter])
     assert(parser.getFilters(1).isInstanceOf[InvertFilter])
     assert(parser.getFilters(2).isInstanceOf[FlipFilter])

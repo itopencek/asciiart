@@ -23,7 +23,7 @@ class FileRgbImageLoaderTests extends FunSuite {
     val image: RgbImage = loadPNG(imageCowboyPath)
     var data = ""
 
-    image.foreach(pixel => data += pixel.getInt() + " ")
+    image.foreach(pixel => data += pixel.getRGB() + " ")
     // remove last space
     data = data.dropRight(1)
 
