@@ -16,7 +16,7 @@ object Main extends App {
 
   try {
     // parse input arguments
-    parser.parse(args)
+    parser.parse(args.toList)
 
     // load image
     val rgbImage: RgbImage = parser.getLoader.load()
